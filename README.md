@@ -24,6 +24,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ├── my-project
 │   ├── src
+|   |   ├── api
+|   |   |   ├── chat
+|   |   |   |   ├── route.ts
 │   │   ├── app
 │   │   │   ├── layout.tsx
 │   │   │   ├── page.tsx
@@ -34,9 +37,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 │   │   ├── lib
 |   |   |   ├── gemini.ts
 │   │   │   ├── prisma.ts
-│   │   ├── pages
-│   │   │   ├── api
-│   │   │   │   ├── chat.ts
+|   |   ├── pages
+|   |   |   ├── chat
+|   |   |   |   ├── chat.ts
 │   │   ├── styles
 │   │   │   ├── globals.css
 │   ├── prisma

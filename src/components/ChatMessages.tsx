@@ -13,6 +13,7 @@ interface Message {
 export default function ChatMessages() {
   const [messages, setMessages] = useState<Message[]>([]);
 
+  // Carregar mensagens da API ao montar o componente
   useEffect(() => {
     fetch("/api/chat")
       .then((res) => {
@@ -22,7 +23,7 @@ export default function ChatMessages() {
         return res.json();
       })
       .then((data) => {
-        console.log("Dados recebidos da API:", data);  // Logando a resposta
+        console.log("Dados recebidos da API:", data);
         if (Array.isArray(data)) {
           setMessages(data);
         } else {
@@ -34,21 +35,33 @@ export default function ChatMessages() {
       });
   }, []);
 
+  // Enviar mensagem do usuário e obter resposta da API externa
   const sendMessage = async (text: string) => {
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text, isUser: true }),
-    });
+    const userMessage = { id: String(Date.now()), text, isUser: true };
 
-    const newMessages = await response.json();
+    // Adiciona a mensagem do usuário à lista de mensagens
+    setMessages((prev) => [...prev, userMessage]);
 
-    console.log('rsposta aq', newMessages);
-    // Verifica se newMessages é um array antes de atualizar o estado
-    if (Array.isArray(newMessages)) {
-      setMessages((prev) => [...prev, ...newMessages]);
-    } else {
-      console.error("Resposta da API não é um array:", newMessages);
+    // Envia a mensagem para a API e espera pela resposta
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text, isUser: true }),
+      });
+
+      const newMessages = await response.json();
+      console.log('Resposta da API:', newMessages);
+
+      // Verifica se a resposta é um array e atualiza o estado com a resposta
+      if (Array.isArray(newMessages) && newMessages.length > 0) {
+        // Adiciona as novas mensagens (bot) ao estado
+        setMessages((prev) => [...prev, ...newMessages]);
+      } else {
+        console.error("Resposta da API não é um array válido:", newMessages);
+      }
+    } catch (error) {
+      console.error("Erro ao enviar a mensagem:", error);
     }
   };
 

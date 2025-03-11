@@ -19,8 +19,9 @@ export async function askGemini(prompt: string) {
     }
 
     const data = await response.json();
-    console.log('chegou aq eu esper', data);
-    return data?.contents?.[0]?.parts?.[0]?.text || "Erro ao processar resposta";
+
+    const res = data?.candidates?.[0].content.parts[0].text || data?.contents?.[0]?.parts?.[0]?.text;
+    return res || "Erro ao processar resposta";
   } catch (error) {
     console.error("Erro ao chamar a API Gemini:", error);
     throw error;
