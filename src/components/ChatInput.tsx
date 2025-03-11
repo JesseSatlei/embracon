@@ -1,25 +1,39 @@
-"use client";
-
 import { useState } from "react";
 
-export default function ChatInput({ onSend }: { onSend: (message: string) => void }) {
-  const [message, setMessage] = useState("");
+interface ChatInputProps {
+  onSend: (text: string) => void;
+}
 
-  const sendMessage = () => {
-    if (!message.trim()) return;
-    onSend(message);
-    setMessage("");
+export default function ChatInput({ onSend }: ChatInputProps) {
+  const [text, setText] = useState("");
+
+  const handleSend = () => {
+    if (text.trim() === "") return;
+    onSend(text);
+    setText("");
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSend();
+    }
   };
 
   return (
-    <div className="flex items-center gap-2 p-2 border-t">
+    <div className="flex space-x-2 p-2 border-t">
       <input
-        className="w-full p-2 border rounded placeholder:text-gray-600 text-gray-700"
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        onKeyDown={handleKeyDown}
+        className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-600 text-gray-700"
         placeholder="Digite sua mensagem..."
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
       />
-      <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={sendMessage}>
+      <button
+        onClick={handleSend}
+        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
+      >
         Enviar
       </button>
     </div>
