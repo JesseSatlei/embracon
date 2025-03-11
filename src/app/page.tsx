@@ -1,7 +1,9 @@
+import ChatMessages from "@/components/ChatMessages";
+
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="w-full max-w-2xl p-4">
+      <ChatMessages />
+    </div>
+  );
 }
