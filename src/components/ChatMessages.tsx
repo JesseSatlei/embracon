@@ -13,7 +13,6 @@ interface Message {
 export default function ChatMessages() {
   const [messages, setMessages] = useState<Message[]>([]);
 
-  // Carregar mensagens da API ao montar o componente
   useEffect(() => {
     fetch("/api/chat")
       .then((res) => {
@@ -35,7 +34,6 @@ export default function ChatMessages() {
       });
   }, []);
 
-  // Enviar mensagem do usuário e obter resposta da API externa
   const sendMessage = async (text: string) => {
     const userMessage = { id: String(Date.now()), text, isUser: true };
 
