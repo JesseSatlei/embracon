@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://embracon-seven.vercel.app/api/sitemap.xml
