@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 interface ChatInputProps {
@@ -30,12 +31,14 @@ export default function ChatInput({ onSend }: ChatInputProps) {
         className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-600 text-gray-700"
         placeholder="Digite sua mensagem..."
       />
-      <button
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.9 }}
         onClick={handleSend}
         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
       >
         Enviar
-      </button>
+      </motion.button>
     </div>
   );
 }

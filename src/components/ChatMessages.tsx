@@ -51,9 +51,7 @@ export default function ChatMessages() {
       const newMessages = await response.json();
       console.log('Resposta da API:', newMessages);
 
-      // Verifica se a resposta é um array e atualiza o estado com a resposta
       if (Array.isArray(newMessages) && newMessages.length > 0) {
-        // Adiciona as novas mensagens (bot) ao estado
         setMessages((prev) => [...prev, ...newMessages]);
       } else {
         console.error("Resposta da API não é um array válido:", newMessages);
