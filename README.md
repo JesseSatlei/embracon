@@ -1,68 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js Chat App
 
-## Getting Started
+Este é um projeto baseado em [Next.js](https://nextjs.org), criado com [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-First, run the development server:
+## 🚀 Getting Started
+
+### Pré-requisitos
+Certifique-se de ter instalado:
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
+
+### Instalação
+Clone o repositório e instale as dependências:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/JesseSatlei/embracon.git
+npm install  # ou yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Rodando o projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para iniciar o servidor de desenvolvimento:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev  # ou yarn dev
+```
 
-## Estrutura de Pastas
+Abra [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
 
-├── my-project
-│   ├── src
-|   |   ├── api
-|   |   |   ├── chat
-|   |   |   |   ├── route.ts
-│   │   ├── app
-│   │   │   ├── layout.tsx
-│   │   │   ├── page.tsx
-│   │   ├── components
-│   │   │   ├── ChatBubble.tsx
-│   │   │   ├── ChatInput.tsx
-│   │   │   ├── ChatMessages.tsx
-│   │   ├── lib
-|   |   |   ├── gemini.ts
-│   │   │   ├── prisma.ts
-|   |   ├── pages
-|   |   |   ├── chat
-|   |   |   |   ├── chat.ts
-│   │   ├── styles
-│   │   │   ├── globals.css
-│   ├── prisma
-│   │   ├── schema.prisma
-│   ├── public
-│   ├── .eslintrc.json
-│   ├── .gitignore
-│   ├── next.config.js
-│   ├── package.json
-│   ├── postcss.config.js
-│   ├── tailwind.config.js
-│   ├── tsconfig.json
+## 📂 Estrutura de Pastas
 
+```
+├── src
+│   ├── api
+│   │   ├── chat
+│   │   │   ├── route.ts
+│   ├── app
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   ├── components
+│   │   ├── ChatBubble.tsx
+│   │   ├── ChatInput.tsx
+│   │   ├── ChatMessages.tsx
+│   ├── lib
+│   │   ├── gemini.ts
+│   │   ├── prisma.ts
+│   ├── styles
+│   │   ├── globals.css
+├── prisma
+│   ├── schema.prisma
+├── public
+├── .eslintrc.json
+├── .gitignore
+├── next.config.js
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+```
 
-Componentes essenciais
+### ✨ Componentes Essenciais
+- **ChatBubble.tsx** ➝ Balão de conversa para assistente/usuário.
+- **ChatInput.tsx** ➝ Campo de entrada para mensagens.
+- **ChatMessages.tsx** ➝ Listagem de mensagens.
 
-ChatBubble.tsx ➝ Balão de conversa para assistente/usuário.
-ChatInput.tsx ➝ Input de mensagens.
-ChatContainer.tsx ➝ Contêiner do chat.
+## 🌍 Acessibilidade (A11y)
+Este projeto segue boas práticas de acessibilidade, incluindo:
+- Uso de **aria-labels** e **role attributes** para leitores de tela.
+- Navegação com **teclado** e **atalhos acessíveis**.
+- Alto contraste e suporte para **modo escuro**.
 
+## 🔍 SEO e Performance
+- **Meta tags** essenciais para indexação.
+- Uso de **Next.js Head** para otimização.
+- Implementação de **Schema.org** para melhor ranqueamento.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deploy no Vercel
+Foi realizado o deploy na Vercel
+https://embracon-seven.vercel.app/
